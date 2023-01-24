@@ -13,6 +13,19 @@
             <input type="text" class="form-control" id="client_name" name="client_name" value="{{old('client_name', $project->client_name)}}" placeholder="client_name..">
         </div>
         <div class="mb-3">
+            <label for="technologies" class="form-label d-block">technologies</label>
+                @foreach ($technologies as $technology)
+                    <input type="checkbox" id="technology{{$loop->iteration}}" name="technologies[]" value="{{$technology->id}}"
+                    @if (!$errors->all() && $project->technologies->contains($technology))
+                        checked
+                    @elseif ($errors->all() && in_array($technology->id, old('technologies',[])))
+                        checked
+                    @endif
+                    >
+                    <label class="me-2" for="technology{{$loop->iteration}}">{{$technology->name}}</label>
+                @endforeach
+        </div>
+        <div class="mb-3">
             <label for="summary" class="form-label">summary</label>
             <input type="text" class="form-control" id="summary" name="summary" value="{{old('summary', $project->summary)}}" placeholder="summary..">
         </div>

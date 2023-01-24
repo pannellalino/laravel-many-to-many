@@ -16,7 +16,7 @@ class TechnologiesTableSeeder extends Seeder
      */
     public function run()
     {
-        $data = ['MySQL','WordPress','Font Awesome','Bootstrap','Python','jQuery'];
+        $data = ['MySQL','WordPress','Font Awesome','Bootstrap'];
 
         foreach ($data as $technology) {
             $new_technology = new Technology();
